@@ -4,7 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import "./App.css";
-
+import { ThemeSettings } from "./components";
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
     currentMode,
     activeMenu,
     currentColor,
+    themeSettings,
     setThemeSettings,
   } = useStateContext();
 
@@ -59,6 +60,7 @@ const App = () => {
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               Navbar
             </div>
+            <div>{themeSettings && <ThemeSettings />}</div>
           </div>
         </div>
       </BrowserRouter>
