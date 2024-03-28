@@ -4,7 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import "./App.css";
-import { ThemeSettings, Sidebar } from "./components";
+import { ThemeSettings, Sidebar, Navbar } from "./components";
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
@@ -55,12 +55,12 @@ const App = () => {
           <div
             className={
               activeMenu
-                ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
-                : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
+                ? "dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full"
+                : "bg-main-bg dark:bg-main-dark-bg w-full min-h-screen flex-2 "
             }
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-              Navbar
+              <Navbar />
             </div>
             <div>{themeSettings && <ThemeSettings />}</div>
           </div>
