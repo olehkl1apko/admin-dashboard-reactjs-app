@@ -4,7 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import "./App.css";
-import { ThemeSettings, Sidebar, Navbar } from "./components";
+import { ThemeSettings, Sidebar, Navbar, Footer } from "./components";
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
             </TooltipComponent>
           </div>
           {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+            <div className="w-1/5 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
             </div>
           ) : (
@@ -63,6 +63,7 @@ const App = () => {
               <Navbar />
             </div>
             <div>{themeSettings && <ThemeSettings />}</div>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
