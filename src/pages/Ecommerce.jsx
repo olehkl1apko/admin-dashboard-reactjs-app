@@ -36,24 +36,25 @@ const Ecommerce = () => {
   return (
     <div className="p-10 pt-24">
       <div className="flex flex-wrap justify-center gap-10 ">
-        <div className=" bg-yellow-100 dark:text-gray-200 dark:bg-yellow-700 h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3">
+        <div
+          className="dark:text-gray-200h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3"
+          style={{ backgroundColor: currentColor }}
+        >
           <div className="flex justify-between items-center">
             <div>
-              <p className="font-bold text-gray-400">Earnings</p>
+              <p className="font-bold text-gray-300 mb-2">Earnings</p>
               <p className="text-2xl">$63,448.78</p>
             </div>
-            <button
-              type="button"
-              style={{ backgroundColor: currentColor }}
-              className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
-            >
-              <BsCurrencyDollar />
-            </button>
+            <div className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4 dark:bg-zinc-100 bg-secondary-dark-bg">
+              <BsCurrencyDollar
+                fill={currentMode === "Dark" ? "black" : "white"}
+              />
+            </div>
           </div>
           <div className="mt-6">
             <Button
-              color="white"
-              bgColor={currentColor}
+              color={currentMode === "Dark" ? "black" : "white"}
+              bgColor={currentMode === "Dark" ? "white" : "black"}
               text="Download"
               borderRadius="10px"
             />

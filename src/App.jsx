@@ -1,75 +1,29 @@
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FiSettings } from "react-icons/fi";
-import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import { BrowserRouter } from "react-router-dom";
 
 import "./App.css";
-import { ThemeSettings, Sidebar, Navbar, Footer } from "./components";
-import {
-  Ecommerce,
-  Orders,
-  Calendar,
-  Employees,
-  Stacked,
-  Pyramid,
-  Customers,
-  Kanban,
-  Line,
-  Area,
-  Bar,
-  Pie,
-  Financial,
-  ColorPicker,
-  ColorMapping,
-  Editor,
-} from "./pages";
+import AppRoutes from "./routes";
+import { ThemeSettings, Sidebar, Navbar, Footer, Settings } from "./components";
+
 import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
-  const {
-    setCurrentColor,
-    setCurrentMode,
-    currentMode,
-    activeMenu,
-    currentColor,
-    themeSettings,
-    setThemeSettings,
-  } = useStateContext();
-
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem("colorMode");
-    const currentThemeMode = localStorage.getItem("themeMode");
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, [setCurrentColor, setCurrentMode]);
+  const { currentMode, activeMenu, themeSettings } = useStateContext();
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4 z-[1000]">
-            <TooltipComponent content="Settings" position="Top">
-              <button
-                type="button"
-                onClick={() => setThemeSettings(true)}
-                style={{ background: currentColor }}
-                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray rounded-full"
-              >
-                <FiSettings />
-              </button>
-            </TooltipComponent>
+          <Settings />
+          <div
+            className={`${
+              activeMenu
+                ? "w-1/5 max-w-80 fixed sidebar dark:bg-secondary-dark-bg bg-white"
+                : "w-0"
+            }`}
+          >
+            <Sidebar />
           </div>
-          {activeMenu ? (
-            <div className="w-1/5 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
+
           <div
             className={
               activeMenu
@@ -80,35 +34,9 @@ const App = () => {
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
-            <div>
+            <div className="md:ml-8">
               {themeSettings && <ThemeSettings />}
-
-              <Routes>
-                {/* dashboard  */}
-                <Route path="/" element={<Ecommerce />} />
-                <Route path="/ecommerce" element={<Ecommerce />} />
-
-                {/* pages  */}
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/employees" element={<Employees />} />
-                <Route path="/customers" element={<Customers />} />
-
-                {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} />
-
-                {/* charts  */}
-                <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/financial" element={<Financial />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
-                <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} />
-              </Routes>
+              <AppRoutes />
             </div>
             <Footer />
           </div>
