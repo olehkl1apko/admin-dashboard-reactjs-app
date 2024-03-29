@@ -22,7 +22,7 @@ const Orders = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Orders" />
-      <div className=" w-[500px] md:w-[800px]">
+      <div className=" w-[500px] lg:w-[650px] xl:w-[900px]">
         <GridComponent
           id="gridcomp"
           dataSource={ordersData}

@@ -34,9 +34,9 @@ const Ecommerce = () => {
   const { currentColor, currentMode } = useStateContext();
 
   return (
-    <div className="mt-24">
-      <div className="flex flex-wrap lg:flex-nowrap justify-center ">
-        <div className="bg-zinc-100 dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3">
+    <div className="p-10 pt-24">
+      <div className="flex flex-wrap justify-center gap-10 ">
+        <div className=" bg-yellow-100 dark:text-gray-200 dark:bg-yellow-700 h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3">
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
@@ -59,11 +59,11 @@ const Ecommerce = () => {
             />
           </div>
         </div>
-        <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
+        <div className="flex m-3 flex-wrap justify-center gap-2 items-center">
           {earningData.map((item) => (
             <div
               key={item.title}
-              className=" bg-zinc-100 h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+              className=" bg-zinc-100 h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-52  p-4 pt-9 rounded-2xl "
             >
               <button
                 type="button"
@@ -374,20 +374,21 @@ const Ecommerce = () => {
           <div className="mt-10">
             <img className="md:w-96 h-50 " src={product9} alt="" />
             <div className="mt-8">
-              <p className="font-semibold text-lg">React 18 coming soon!</p>
-              <p className="text-gray-400 ">By Johnathan Doe</p>
-              <p className="mt-8 text-sm text-gray-400">
-                This will be the small description for the news you have shown
-                here. There could be some great info.
+              <p className="font-semibold text-lg">React 19 coming soon!</p>
+              <p className="text-gray-400 ">By Wayne</p>
+              <p className="my-8 text-sm text-gray-400">
+                Now, let’s take an early look at the new features that might be
+                officially released in version 19, based on the latest news from
+                the React team.
               </p>
-              <div className="mt-3">
+              <a href="https://blog.stackademic.com/react-19-is-coming-whats-new-79e2d4b948e4">
                 <Button
                   color="white"
                   bgColor={currentColor}
                   text="Read More"
                   borderRadius="10px"
                 />
-              </div>
+              </a>
             </div>
           </div>
         </div>
